@@ -1,53 +1,299 @@
-<html>
-    <link rel="stylesheet" type="text/css" href="/css/main.css">
-    <head>
-        <title>私募代币信息查询</title>
-    </head>
-    <body style="background-color:#E7F3FF;text-align:center;">
-        <nav>
-            <ul>
-            </ul>
-        </nav>
-        <div class="container">
-            <div class="blurb">
-				<br/>
-				<br/>
-				<br/>
-				<br/>
-				<br/>
-				<br/>
-				<br/>
-                <!--<h1>Hi there, Very Glad To See You!</h1>
-                <p>If you by chance have bitcoins, I would be very grateful if you can donate some bitcoins to me.<br>
-                God will bless you more happy and more rich! Thanks a lot!</p>-->
-				<table border="0" style="margin:auto">
-				<tr>
-				<td>代币名称</td>
-				<td>发行数目(亿枚)</td>
-				<td>官网链接</td>
-				<td>更新日期</td>
-				</tr>
-				<tr>
-				<td>VPP</td>
-				<td>50</td>
-				<td><a href="http://www.valp.io/">http://www.valp.io/</a></td>
-				<td>2018/06/18</td>
-				</tr>
-				<tr>
-				<td>IOV</td>
-				<td>100</td>
-				<td><a href="http://carlive.io/">http://carlive.io/</a></td>
-				<td>2018/06/18</td>
-				</tr>
-				</table>
-                <li><b>Bitcoin</b> donate address:1P5Lo44Gv5awAv7yuBeySK8HLVZMe7T5NJ<br></li>
-                <li><b>Ether</b> donate address:0x33e91AdDf30819f42d1b4ea0249F75eFe02d25A7</li>
-            </div><!-- /.blurb -->
-        </div><!-- /.container -->
-        <footer>
-            <ul>
+<!DOCTYPE html>
+<!-- saved from url=(0038)https://www.fcoin.com/transparent.html -->
+<html lang="en-us"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>FCoin</title>
+    
+<link rel="stylesheet" href="./FCoin_files/trans.css" type="text/css">
 
-            </ul>
-        </footer>
-    </body>
-</html>
+<style>#cVim-command-bar, #cVim-command-bar-mode, #cVim-command-bar-input, #cVim-command-bar-search-results,
+.cVim-completion-item, .cVim-completion-item .cVim-full, .cVim-completion-item .cVim-left,
+.cVim-completion-item .cVim-right {
+  font-family: Helvetica, Helvetica Neue, Neue, sans-serif, monospace, Arial;
+  font-size: 10pt !important;
+  -webkit-font-smoothing: antialiased !important;
+}
+
+#cVim-command-bar {
+  position: fixed;
+  z-index: 2147483646;
+  background-color: #1b1d1e;
+  color: #bbb;
+  display: none;
+  box-sizing: content-box;
+  box-shadow: 0 3px 3px rgba(0,0,0,0.4);
+  left: 0;
+  width: 100%;
+  height: 20px;
+}
+
+#cVim-command-bar-mode {
+  display: inline-block;
+  vertical-align: middle;
+  box-sizing: border-box;
+  padding-left: 2px;
+  height: 100%;
+  width: 10px;
+  padding-top: 2px;
+  color: #888;
+}
+
+#cVim-command-bar-input {
+  background-color: #1b1d1e;
+  color: #bbb;
+  height: 100%;
+  right: 0;
+  top: 0;
+  width: calc(100% - 10px);
+  position: absolute;
+}
+
+#cVim-command-bar-search-results {
+  position: fixed;
+  width: 100%;
+  overflow: hidden;
+  z-index: 2147483647;
+  left: 0;
+  box-shadow: 0 3px 3px rgba(0,0,0,0.4);
+  background-color: #1c1c1c;
+}
+
+.cVim-completion-item, .cVim-completion-item .cVim-full, .cVim-completion-item .cVim-left, .cVim-completion-item .cVim-right {
+  text-overflow: ellipsis;
+  padding: 1px;
+  display: inline-block;
+  box-sizing: border-box;
+  vertical-align: middle;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.cVim-completion-item:nth-child(even) {
+  background-color: #1f1f1f;
+}
+
+.cVim-completion-item {
+  width: 100%; left: 0;
+  color: #bcbcbc;
+}
+
+.cVim-completion-item[active] {
+  width: 100%; left: 0;
+  color: #1b1d1e;
+  background-color: #f1f1f1;
+}
+
+.cVim-completion-item[active] span {
+  color: #1b1d1e;
+}
+
+.cVim-completion-item .cVim-left {
+  color: #fff;
+  width: 37%;
+}
+
+.cVim-completion-item .cVim-right {
+  font-style: italic;
+  color: #888;
+  width: 57%;
+}
+
+
+#cVim-link-container, .cVim-link-hint,
+#cVim-hud, #cVim-status-bar {
+  font-family: Helvetica, Helvetica Neue, Neue, sans-serif, monospace, Arial;
+  font-size: 10pt !important;
+  -webkit-font-smoothing: antialiased !important;
+}
+
+#cVim-link-container {
+  position: absolute;
+  pointer-events: none;
+  width: 100%; left: 0;
+  height: 100%; top: 0;
+  z-index: 2147483647;
+}
+
+.cVim-link-hint {
+  position: absolute;
+  color: #302505 !important;
+  background-color: #ffd76e !important;
+  border-radius: 2px !important;
+  padding: 2px !important;
+  font-size: 8pt !important;
+  font-weight: 500 !important;
+  text-transform: uppercase !important;
+  border: 1px solid #ad810c;
+  display: inline-block !important;
+  vertical-align: middle !important;
+  text-align: center !important;
+  box-shadow: 2px 2px 1px rgba(0,0,0,0.25) !important;
+}
+
+.cVim-link-hint_match {
+  color: #777;
+  text-transform: uppercase !important;
+}
+
+
+#cVim-hud {
+  background-color: rgba(28,28,28,0.9);
+  position: fixed !important;
+  transition: right 0.2s ease-out;
+  z-index: 24724289;
+}
+
+#cVim-hud span {
+  padding: 2px;
+  padding-left: 4px;
+  padding-right: 4px;
+  color: #8f8f8f;
+  font-size: 10pt;
+}
+
+#cVim-frames-outline {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  right: 0;
+  z-index: 9999999999;
+  box-sizing: border-box;
+  border: 3px solid yellow;
+}
+</style></head>
+<body>
+
+    <header class="header">
+    <div class="logo"><a href="https://www.fcoin.com/"></a></div>
+    <div class="menu-box">
+        <a href="http://www.bitcoinbet.top/" class="">预售币汇总</a>
+        <a href="https://www.fcoin.com/aboutft.html" class="">交易所汇总</a>
+        <a href="https://www.fcoin.com/ft.pdf?v=1.3" class="" target="_blank">白皮书</a>
+        <a href="https://www.fcoin.com/transparent.html"></a>    </div>
+
+    <!-- <div class='getNav'><i class="fa fa-navicon" aria-hidden="true"></i></div> -->
+    <div class="notice-box"></div>
+    <div class="navbar-nav">
+      <div class="ge">&nbsp;</div>
+        <div class="lang-box">
+            <div class="select-box">
+                <div class="select-curr">
+                <i class="icon icon-lang"></i>
+                <span>简体中文</span>
+                <i class="icon icon-down"></i>
+                </div>
+                <div class="select-options" id="lang">
+                <div class="option" data-value="zh-cn">简体中文</div>
+                <div class="option" data-value="en-us">English</div>
+            </div>
+        </div>
+
+        </div>
+        <div class="user-box">
+                        <a href="https://exchange.fcoin.com/u/login" class="login">登录</a>
+            <a href="https://exchange.fcoin.com/u/register" class="register">注册</a>      </div>
+    </div>
+    <div class="h5-menu">
+        <div class="username">
+                        <a href="https://exchange.fcoin.com/u/login">登录</a>/
+            <a href="https://exchange.fcoin.com/u/register">注册</a>
+      </div>
+        <i class="icon icon-menu" id="h5_menu"></i>
+    </div>
+</header>
+<div class="menu-list" id="menu_list">
+    <a href="https://exchange.fcoin.com/exchange" class="">交易</a>
+        <a href="https://www.fcoin.com/aboutft.html" class="">FT</a>
+    <a href="https://www.fcoin.com/ft.pdf?v=1.3" class="" target="_blank">白皮书</a>
+    <div class="h5-lang">
+        <a href="javascript:;" data-value="zh-cn">简体中文</a>
+        <a href="javascript:;" data-value="en-us">English</a>
+    </div>
+</div>
+
+
+
+    <div class="bodyMain">
+        <div class="block1">
+            <div class="container">
+                <div class="mainTitle">预售中的代币</div>
+                <div class="subTitle">
+                  <table border="0">
+                    <tr>
+                      <th width="10%">代币</th>
+                      <th width="31%">发行总量(亿枚)</th>
+                      <th width="37%">项目链接</th>
+                      <th width="22%">更新日期</th>
+                    </tr>
+                    <tr>
+                      <td>VPP</td>
+                      <td>50</td>
+                      <td><a href="http://www.valp.io">http://www.valp.io</a>/</td>
+                      <td>2018/6/18</td>
+                    </tr>
+                    
+                    <tr>
+                      <td>IOV</td>
+                      <td>100</td>
+                      <td><a href="http://carlive.io">http://carlive.io</a>/</td>
+                      <td>2018/6/18</td>
+                    </tr>
+                  </table>
+                  <p>&nbsp;</p>
+              </div>
+            </div>
+        </div>
+
+      <div class="block2"></div>
+    </div>
+
+
+
+<div class="footer_new">
+    <div class="container">
+      <dl class="item-1">
+            <dt>服务</dt>
+          <dd><a href="http://www.bitcoinbet.top/">交易中心</a></dd>
+            <dd><a href="http://www.bitcoinbet.top/" target="_blank">支持</a></dd>
+            <dd><a href="http://www.bitcoinbet.top/" target="_blank">提交请求</a></dd>
+        </dl>
+        <dl class="item-2">
+            <dt>条款说明</dt>
+            <dd><a href="http://www.bitcoinbet.top/">隐私政策</a></dd>
+            <dd><a href="http://www.bitcoinbet.top/">用户协议</a></dd>
+                        <dd><a href="http://www.bitcoinbet.top/" target="_blank">手续费</a></dd>
+      </dl>
+        <dl class="item-3">
+            <dt>关于我们</dt>
+            <dd><a href="http://www.bitcoinbet.top/">客户支持</a></dd>
+            <dd><a href="http://www.bitcoinbet.top/" target="_blank">联系我们</a></dd>
+            <dd><a href="http://www.bitcoinbet.top/">申请上币</a></dd>
+        </dl>
+  </div>
+</div>
+
+<script type="text/javascript" async="" src="./FCoin_files/analytics.js.下载"></script><script src="./FCoin_files/jquery.min.js.下载"></script>
+<script src="./FCoin_files/common.js.下载"></script>
+<div class="teleGram">
+        <a href="https://t.me/fcoinofficial" class="teleTo" target="_blank"><img src="./FCoin_files/telegram.png"> <span>官方Telegram群</span></a>
+    </div>
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async="" src="./FCoin_files/js"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'UA-119667777-1');
+</script>
+
+
+
+
+
+</body><div id="cVim-status-bar" style="top: 0px;"></div><iframe src="./FCoin_files/cmdline_frame.html" id="cVim-command-frame"></iframe></html>
