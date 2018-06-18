@@ -1,0 +1,135 @@
+$(function(){
+    // $('.getNav').click(function(e){
+    //     if($(".navbar-nav").is(":hidden")) {
+    //         $(this).find('i.fa').removeClass('fa-navicon').addClass('fa-close');
+    //         $(".navbar-nav").slideDown(500);
+    //         $('.navbar').addClass('navShow');
+    //         $(this).addClass('list-icon');
+    //         e ? e.stopPropagation() : event.cancelBubble = true;
+    //     }else{
+    //         $(".navbar-nav").slideUp(100);
+    //         $(this).find('i.fa').addClass('fa-navicon').removeClass('fa-close');
+    //         $('.navbar').removeClass('navShow');
+    //         $(this).removeClass('list-icon');
+    //         e ? e.stopPropagation() : event.cancelBubble = true;
+    //     }
+    // })
+    //
+    // $('body').click(function(e){
+    //     if(!$('.getNav').is(":hidden")&&!$(".navbar-nav").is(":hidden")) {
+    //         $('.getNav').find('i.fa').addClass('fa-navicon').removeClass('fa-close');
+    //         $('.navbar').removeClass('navShow');
+    //         $('.getNav').removeClass('list-icon');
+    //         $(".navbar-nav").slideUp(100);
+    //     e ? e.stopPropagation() : event.cancelBubble = true;
+    //     }
+    // })
+
+})
+$('.select-box').click(function () {
+    var _this = $(this);
+    if(_this.hasClass('active')){
+        _this.removeClass('active');
+        _this.find('.select-options').hide();
+    }else{
+        _this.addClass('active');
+        _this.find('.select-options').show();
+    }
+});
+$('#lang').find('.option').click(function(){
+    var val = $(this).attr('data-value');
+    var word = $(this).html();
+    $(this).parent().parent().find('span').html(word);
+    setCookie('think_var', val);
+    location.reload();
+});
+
+function prevent (e) {
+    e.preventDefault();
+}
+
+$('#h5_menu').click(function () {
+    $('#menu_list').toggle(function () {
+
+    });
+});
+
+$('.h5-lang').find('a').click(function () {
+    var val = $(this).attr('data-value');
+    setCookie('think_var', val);
+    location.reload();
+});
+
+$(document).on('blur','.group-input',function () {
+    var _this = $(this);
+    if($.trim(_this.val()) != ''){
+        _this.parent().addClass('content');
+    }else{
+        _this.parent().removeClass('content');
+    }
+});
+
+$.ajax({
+    type: 'get',
+    url: '/api/common/get_announcements',
+    data: {},
+    dataType: 'json',
+    success: function (result) {
+        if(result.status == 'ok'){
+            //console.log(result);
+            var data = result.data.content[0];
+            //var html = '<span>NEW</span> <a href="'+data.html_url+'" target="_blank">['+$.trim(get_date(data.updated_at,"YMD"))+'] '+data.title+'</a>';
+            var lang = getCookie('think_var');
+            var gg = 'NEWS';
+            if(lang == 'zh-cn'){
+                gg = '公告';
+            }
+            var html = '<div class="notice-info"><span>'+gg+'</span> <a href="'+data.html_url+'" target="_blank"> ['+$.trim(get_date(data.updated_at,"YMD"))+'] '+data.title+'</a></div>';
+            $('.notice').html(html);
+        }
+    }
+});
+
+$('.coinType').click(function () {
+    $(this).find('.option-box').toggle();
+});
+
+//获取时分秒
+function get_date(time,type){
+    var date = new Date(time);
+    Y = date.getFullYear() + '-';
+    M = (date.getMonth()+1 < 10 ? '0'+(date.getMonth()+1) : date.getMonth()+1) + '-';
+    D = (date.getDate() < 10 ? '0'+(date.getDate()) : date.getDate()) + ' ';
+    h = (date.getHours() < 10 ? '0'+(date.getHours()) : date.getHours()) + ':';
+    m = (date.getMinutes() < 10 ? '0'+(date.getMinutes()) : date.getMinutes()) + ':';
+    s = (date.getSeconds() < 10 ? '0'+(date.getSeconds()) : date.getSeconds());
+    type = type || 'YMDhms';
+    if (type == 'YMD'){
+        return Y+M+D;
+    }
+    return Y+M+D+h+m+s;
+}
+
+
+var setCookie = function(c_name,value,expiredays)
+{
+    var exdate=new Date()
+    exdate.setDate(exdate.getDate()+expiredays)
+    document.cookie=c_name+ "=" +escape(value)+
+        ((expiredays==null) ? "" : ";expires="+exdate.toGMTString())
+};
+var getCookie = function(c_name)
+{
+    if (document.cookie.length>0)
+    {
+        c_start=document.cookie.indexOf(c_name + "=")
+        if (c_start!=-1)
+        {
+            c_start=c_start + c_name.length+1
+            c_end=document.cookie.indexOf(";",c_start)
+            if (c_end==-1) c_end=document.cookie.length
+            return unescape(document.cookie.substring(c_start,c_end))
+        }
+    }
+    return ""
+};
